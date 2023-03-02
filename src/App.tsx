@@ -2,6 +2,7 @@ import React from 'react'
 import logo from './logo.svg'
 import './App.css'
 import { LearnSuspense } from './components/Suspense'
+import { SwiperContainer } from './components/Swiper'
 
 function App() {
   console.log('😊App Component Rendering!')
@@ -13,6 +14,12 @@ function App() {
       </header>
       <h1>Suspense</h1>
       <LearnSuspense />
+      <SwiperContainer>
+        <div className="swiper-content">
+          <div>Title</div>
+          <div>Body</div>
+        </div>
+      </SwiperContainer>
     </div>
   )
 }
