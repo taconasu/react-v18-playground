@@ -3,6 +3,7 @@ import logo from './logo.svg'
 import './App.css'
 import { LearnSuspense } from './components/Suspense'
 import { SwiperContainer } from './components/Swiper'
+import { Container } from './components/EventTest/EventTest'
 
 function App() {
   console.log('😊App Component Rendering!')
@@ -20,6 +21,7 @@ function App() {
           <div>Body</div>
         </div>
       </SwiperContainer>
+      <Container />
     </div>
   )
 }
