@@ -1,8 +1,12 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // React v18のイベントの伝播に関するテストコンポーネント
 export const Container: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const handleCloseDialog = () => {
+    setIsOpen(false)
+  }
 
   return (
     <>
@@ -14,13 +18,16 @@ export const Container: React.FC = () => {
       >
         Open
       </button>
-      {isOpen && <Dialog />}
+      {isOpen && <Dialog handleCloseDialog={handleCloseDialog} />}
     </>
   )
 }
 
-const Dialog: React.FC = () => {
+const Dialog: React.FC<{ handleCloseDialog: () => void }> = ({
+  handleCloseDialog,
+}) => {
   const handler = () => {
+    handleCloseDialog()
     console.log('I am a handler defined in the window object.🥹')
   }
 
@@ -31,5 +38,16 @@ const Dialog: React.FC = () => {
     }
   }, [])
 
-  return null // サンプルなのでDOMは返しません
+  return (
+    <div
+      onClick={(event) => event.stopPropagation()}
+      style={{
+        width: '300px',
+        height: '100px',
+        background: '#E2C9DF',
+      }}
+    >
+      <p>我、Dialog component を名乗りし者也</p>
+    </div>
+  )
 }
